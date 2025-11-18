@@ -8,46 +8,66 @@ This tutorial will guide you through creating a simple academic document, from s
 
 Before starting, make sure you have:
 
-- ✅ ConTeXt installed and working ([Installation Guide](installation/windows.md))
+- ✅ Portable ConTeXt installed with `python setup-context.py`
 - ✅ Python 3.8+ installed
-- ✅ ConTeXt Academic Press framework downloaded
+- ✅ cap-base framework downloaded
 
 ## 📝 Step 1: Create the Project
 
-Open the terminal (on Windows, use the "ConTeXt Shell" shortcut or run `setuptex.bat` first).
+### Initial Setup (first time only)
+
+If you haven't set up portable ConTeXt yet:
+
+```bash
+# Navigate to the cap-base directory
+cd C:\MyWork\cap-base
+
+# Install portable ConTeXt (5-15 minutes)
+python setup-context.py
+```
 
 ### Create basic project
 
 ```bash
-# Navigate to the framework directory
-cd C:\context-academic-press
+# Make sure you're inside cap-base/
+cd C:\MyWork\cap-base
 
 # Create your first project
-python cap.py new my-first-book --template base --type textbook
+python cap.py new my-first-book
+
+# The project will be created OUTSIDE cap-base, in the parent directory!
 ```
 
 This will create the following structure:
 
 ```
-my-first-book/
-├── content/
-│   ├── chapters/
-│   │   └── 01-introduction.tex    # Example chapter
-│   ├── frontmatter/                # Front matter
-│   └── backmatter/                 # Back matter
-├── assets/
-│   ├── images/                     # Your images
-│   └── logos/                      # Logos
-├── config/
-│   └── book.yaml                   # Configuration
-├── main.tex                        # Main file
-└── Makefile                        # Build automation
+C:\MyWork/
+├── cap-base/                       ← Framework
+│   ├── core/
+│   ├── build/
+│   └── cap.py
+│
+└── my-first-book/                  ← Your project (OUTSIDE cap-base)
+    ├── content/
+    │   ├── chapters/               # Your chapters
+    │   ├── frontmatter/            # Front matter
+    │   └── backmatter/             # Back matter
+    ├── assets/
+    │   ├── images/                 # Your images
+    │   └── logos/                  # Logos
+    ├── config/
+    │   └── book.yaml               # Configuration
+    ├── output/                     # Generated PDFs
+    ├── main.tex                    # Main file
+    ├── build.py                    # Build helper
+    └── README.md                   # Project instructions
 ```
 
 ### Enter the project directory
 
 ```bash
-cd my-first-book
+# Navigate to the project (one level up and then enter)
+cd ../my-first-book
 ```
 
 ## ⚙️ Step 2: Configure Metadata
@@ -100,7 +120,8 @@ Open `main.tex` and see the basic structure:
 % my-first-book
 % Document created with ConTeXt Academic Press
 
-\environment ../core/cap-core
+% Load CAP framework (relative path to cap-base)
+\environment ../cap-base/core/cap-core
 
 \startdocument
 
@@ -340,35 +361,38 @@ In `main.tex`, add after the first chapter:
 
 ## 🔨 Step 6: Compile the Document
 
-Now let's compile! There are several ways:
+Now let's compile! With the new cap-base structure, it's very simple:
 
-### Method 1: Using CAP CLI (Recommended)
+### Method 1: Using the Project Helper (Recommended)
 
 ```bash
-# Quick compilation (draft mode)
-python ../cap.py build --draft
+# Make sure you're in the project directory
+cd C:\MyWork\my-first-book
+
+# Default compilation
+python build.py
+
+# Quick compilation (draft mode - faster)
+python build.py --draft
 
 # Final compilation (optimized)
-python ../cap.py build --final
+python build.py --final
 ```
 
-### Method 2: Using Make (if available)
+💡 **Advantage**: The `build.py` automatically finds cap-base and calls the compiler!
+
+### Method 2: Calling cap.py Directly
 
 ```bash
-# Default compilation
-make build
-
-# Draft mode (faster)
-make draft
-
-# Final version
-make final
+# From the project directory
+python ../cap-base/cap.py build --draft
+python ../cap-base/cap.py build --final
 ```
 
-### Method 3: Direct ConTeXt
+### Method 3: Direct ConTeXt (Advanced)
 
 ```bash
-# Compile with ConTeXt
+# Only if ConTeXt is in PATH
 context main.tex
 ```
 
@@ -377,13 +401,23 @@ context main.tex
 You'll see messages in the terminal indicating progress:
 
 ```
-Compiling document...
+→ Executing: python C:\MyWork\cap-base\cap.py build
+
+✓ Using portable ConTeXt: C:\MyWork\cap-base\context\standalone
+✓ ConTeXt binaries: ...\texmf-win64\bin
+
+Compiling: main.tex
+Mode: default
+
 resolvers       | formats | executing runner 'run luatex format': ...
 pages           > flushing realpage 1, userpage 1
 ...
 mkiv lua stats  > used platform: mswin, type: windows, binary subtree: texmf-win64
 mkiv lua stats  > used engine: luatex version: 1.15
 ...
+
+✓ Compilation completed in 8.42s
+PDF generated: output/main.pdf
 ```
 
 ⏱️ **First compilation**: May take 30-60 seconds (generates cache)
@@ -391,26 +425,26 @@ mkiv lua stats  > used engine: luatex version: 1.15
 
 ## 📄 Step 7: View the Result
 
-After successful compilation, you'll find the `main.pdf` file in the project directory.
+After successful compilation, you'll find the PDF file in `output/main.pdf`.
 
 ### Open the PDF
 
 **Windows:**
 ```bash
-start main.pdf
+start output\main.pdf
 ```
 
 **Linux:**
 ```bash
-xdg-open main.pdf
+xdg-open output/main.pdf
 ```
 
 **macOS:**
 ```bash
-open main.pdf
+open output/main.pdf
 ```
 
-Or simply double-click the `main.pdf` file in the file explorer.
+Or simply navigate to the `output/` folder and double-click the `main.pdf` file.
 
 ## 🎉 Expected Result
 
@@ -533,26 +567,28 @@ examples/
 ### Useful Commands
 
 ```bash
-# Validate project
-python cap.py validate
+# From the project directory:
 
-# Compile and watch for changes
-python cap.py build --watch
+# Validate project
+python build.py validate
 
 # Clean temporary files
-make clean
+python build.py clean
 
-# Export to EPUB
-python cap.py export --format epub
+# Or using cap.py directly:
+python ../cap-base/cap.py validate
+python ../cap-base/cap.py build --watch
+python ../cap-base/cap.py export --format epub
 ```
 
 ## ⚠️ Common Problems
 
 ### Error: "ConTeXt not found"
 
-**Solution**: Run `setuptex.bat` before compiling:
+**Solution**: Install portable ConTeXt:
 ```bash
-C:\context\tex\setuptex.bat
+cd C:\MyWork\cap-base
+python setup-context.py
 ```
 
 ### Compilation error
@@ -566,7 +602,7 @@ C:\context\tex\setuptex.bat
 
 **Solution**:
 1. Close the PDF before recompiling
-2. Clear cache: `make clean` or delete `.tuc`, `.log` files
+2. Clear cache: `python build.py clean` or delete `.tuc`, `.log` files
 
 ### Fonts don't appear correctly
 
@@ -578,7 +614,7 @@ C:\context\tex\setuptex.bat
 
 1. **Use draft mode during development**
    ```bash
-   python cap.py build --draft
+   python build.py --draft
    ```
    It's much faster!
 
@@ -622,4 +658,4 @@ Keep exploring and creating elegant academic materials! 📚✨
 
 ---
 
-**Need help?** Check the [complete documentation](README.md) or the [practical examples](../../examples/).
+**Need help?** Check the [complete documentation](README.md) or the [main README](../../README.md)

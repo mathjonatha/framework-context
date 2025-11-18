@@ -17,12 +17,31 @@ Um sistema completo baseado em ConTeXt para criar livros didáticos, apostilas e
 
 ## 📋 Pré-requisitos
 
-- ConTeXt (instalação standalone recomendada)
 - Python 3.8+
+- ~300MB de espaço em disco (para ConTeXt portátil)
 - (Opcional) Pandoc para exportação
 - (Opcional) Calibre para conversão EPUB
 
-### Instalação do ConTeXt
+### 🚀 ConTeXt Portátil (Recomendado!)
+
+O framework inclui **ConTeXt portátil** - não precisa instalar no sistema!
+
+```bash
+# Setup automático do ConTeXt
+python setup-context.py
+```
+
+✅ **Vantagens**:
+- Não interfere com o sistema
+- Totalmente portátil
+- Sem configuração de PATH
+- Funciona automaticamente
+
+📖 **[Guia de Setup Portátil](docs/setup-portatil.md)**
+
+### Instalação Tradicional do ConTeXt (Alternativa)
+
+Se preferir instalar ConTeXt globalmente no sistema:
 
 📖 **Guias de Instalação Detalhados**:
 - [🇧🇷 Windows 64-bit (Português)](docs/pt-BR/installation/windows.md)
@@ -32,7 +51,6 @@ Um sistema completo baseado em ConTeXt para criar livros didáticos, apostilas e
 
 **Linux/macOS:**
 ```bash
-# Download ConTeXt standalone
 rsync -av rsync://contextgarden.net/minimals/setup/first-setup.sh .
 sh ./first-setup.sh
 ```
@@ -42,14 +60,29 @@ Baixe [context-setup-win64.zip](http://minimals.contextgarden.net/setup/context-
 
 ## 🚀 Início Rápido
 
-### 1. Criar novo projeto
+### 1. Instalar ConTeXt (primeira vez)
 
 ```bash
-python cap.py new meu-livro --template math-textbook
-cd meu-livro
+# Navegue até o diretório do framework
+cd cap-base
+
+# Instale ConTeXt portátil (aguarde 5-15 minutos)
+python setup-context.py
 ```
 
-### 2. Editar configurações
+### 2. Criar seu primeiro projeto
+
+```bash
+# Crie um novo projeto
+python cap.py new meu-livro
+
+# Navegue para o projeto criado
+cd ../meu-livro
+```
+
+💡 **Nota**: O projeto é criado automaticamente fora do framework para manter tudo organizado!
+
+### 3. Configurar seu livro
 
 Edite `config/book.yaml` com informações do seu livro:
 
@@ -62,7 +95,7 @@ institution:
     primary: "#003366"
 ```
 
-### 3. Escrever conteúdo
+### 4. Escrever conteúdo
 
 Adicione capítulos em `content/chapters/`:
 
@@ -78,41 +111,41 @@ Texto do seu capítulo...
 \stopchapter
 ```
 
-### 4. Compilar
+### 5. Compilar e visualizar
 
 ```bash
-# Compilação rápida (rascunho)
-python cap.py build --draft
+# Compilar (simples!)
+python build.py
 
-# Compilação final
-python cap.py build --final
+# Modos disponíveis:
+python build.py --draft      # Rápido (para desenvolvimento)
+python build.py --final      # Otimizado (versão final)
 
-# Para impressão offset
-python cap.py build --print
-
-# Para leitura digital
-python cap.py build --digital
+# Abrir o PDF gerado
+start output\main.pdf        # Windows
+xdg-open output/main.pdf     # Linux
+open output/main.pdf         # macOS
 ```
 
-## 📁 Estrutura do Framework
+## 📁 Estrutura de um Projeto
+
+Quando você cria um projeto, esta é a estrutura gerada:
 
 ```
-context-academic-press/
-├── core/                    # Núcleo do framework
-│   ├── design-tokens/      # Cores, tipografia, espaçamento
-│   ├── components/         # Componentes base
-│   ├── layouts/           # Layouts de página
-│   └── cap-core.mkiv      # Módulo principal
-├── modules/               # Módulos especializados
-│   ├── stem/             # Ciências Exatas
-│   ├── chemistry/        # Química
-│   ├── programming/      # Programação
-│   └── humanities/       # Humanidades
-├── templates/            # Templates completos
-├── build/               # Sistema de build Python
-├── examples/           # Projetos exemplo
-├── docs/              # Documentação
-└── cap.py            # CLI principal
+meu-livro/
+├── main.tex                    # Arquivo principal
+├── content/                    # Seu conteúdo
+│   ├── chapters/               #   Capítulos
+│   ├── frontmatter/            #   Material inicial
+│   └── backmatter/             #   Material final
+├── assets/                     # Recursos
+│   ├── images/                 #   Suas imagens
+│   └── logos/                  #   Logos
+├── config/
+│   └── book.yaml               # Configuração do livro
+├── output/                     # PDFs gerados aqui
+├── build.py                    # Script de compilação
+└── README.md                   # Instruções
 ```
 
 ## 🎨 Sistema de Design
@@ -184,26 +217,40 @@ Sistema modular baseado em 8pt para consistência visual.
 \stopCAPWarning
 ```
 
-## 🔧 Comandos CLI
+## 🔧 Comandos Principais
+
+### Criar Projetos
 
 ```bash
-# Criar novo projeto
-cap new <nome> [--template <template>] [--type <tipo>]
+# Do diretório cap-base/
+python cap.py new meu-livro              # Projeto básico
+python cap.py new apostila --type handbook   # Apostila
+```
 
-# Compilar
-cap build [--draft|--final|--print|--digital] [--watch]
+### Compilar Documentos
 
-# Validar projeto
-cap validate
+```bash
+# Do diretório do projeto/
+python build.py              # Compilação padrão
+python build.py --draft      # Modo rápido (desenvolvimento)
+python build.py --final      # Modo final (publicação)
+```
 
-# Exportar
-cap export --format [html|epub|docx|xml]
+### Gerenciar ConTeXt
 
-# Limpar arquivos temporários
-cap clean
+```bash
+# Do diretório cap-base/
+python setup-context.py           # Instalar
+python setup-context.py --list    # Listar versões
+python setup-context.py --clean   # Limpar instalação
 ```
 
 ## 📖 Documentação
+
+### 🚀 Comece Aqui
+
+- **[Seu Primeiro Documento](docs/pt-BR/primeiro-documento.md)** - Tutorial completo (15 min)
+- **[Your First Document](docs/en/first-document.md)** - Complete tutorial (15 min)
 
 ### Documentação Multi-idioma
 

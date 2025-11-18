@@ -1,5 +1,14 @@
 # ConTeXt Academic Press - Git Ignore
 
+# ConTeXt Standalone Portátil (instalação local - NÃO versionar)
+context/standalone/
+context/active-version.txt
+setup-cap-env.bat
+setup-cap-env.sh
+
+# NOTA: context/distributions/ É VERSIONADO
+#       Contém os ZIPs de distribuição para facilitar setup
+
 # Arquivos ConTeXt
 *.log
 *.tuc
