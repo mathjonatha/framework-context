@@ -1,0 +1,135 @@
+%D \module
+%D   [     file=typography,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Design Tokens,
+%D     subtitle=Typography System,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C Sistema tipográfico para textos acadêmicos
+%C Escalas, hierarquias e configurações de fontes
+
+\startmodule[cap-typography]
+
+%D Escala Tipográfica - Perfect Fifth (1.5)
+%D Proporção harmônica para hierarquia visual
+
+\definemeasure[cap:type:base]      [11pt]
+\definemeasure[cap:type:small]     [0.833\measured{cap:type:base}]  % ~9.2pt
+\definemeasure[cap:type:large]     [1.5\measured{cap:type:base}]    % ~16.5pt
+\definemeasure[cap:type:xlarge]    [2.25\measured{cap:type:base}]   % ~24.75pt
+\definemeasure[cap:type:xxlarge]   [3.375\measured{cap:type:base}]  % ~37.125pt
+\definemeasure[cap:type:xxxlarge]  [5.063\measured{cap:type:base}]  % ~55.7pt
+
+%D Altura de linha (Leading)
+%D Baseada na proporção áurea para legibilidade
+
+\definemeasure[cap:leading:tight]   [1.25]
+\definemeasure[cap:leading:normal]  [1.618]  % Proporção áurea
+\definemeasure[cap:leading:relaxed] [1.75]
+\definemeasure[cap:leading:loose]   [2]
+
+%D Tracking (Letter-spacing)
+%D Para diferentes contextos
+
+\definemeasure[cap:tracking:tight]   [-0.02em]
+\definemeasure[cap:tracking:normal]  [0em]
+\definemeasure[cap:tracking:wide]    [0.05em]
+\definemeasure[cap:tracking:wider]   [0.1em]
+
+%D Configuração de Fontes Google
+%D Libertinus (Serif), Inter (Sans), JetBrains Mono (Mono)
+
+\starttypescript [serif] [libertinus]
+  \definefontsynonym [Serif]           [file:LibertinusSerif-Regular.otf]
+  \definefontsynonym [SerifBold]       [file:LibertinusSerif-Bold.otf]
+  \definefontsynonym [SerifItalic]     [file:LibertinusSerif-Italic.otf]
+  \definefontsynonym [SerifBoldItalic] [file:LibertinusSerif-BoldItalic.otf]
+\stoptypescript
+
+\starttypescript [sans] [inter]
+  \definefontsynonym [Sans]           [file:Inter-Regular.otf]
+  \definefontsynonym [SansBold]       [file:Inter-Bold.otf]
+  \definefontsynonym [SansItalic]     [file:Inter-Italic.otf]
+  \definefontsynonym [SansBoldItalic] [file:Inter-BoldItalic.otf]
+\stoptypescript
+
+\starttypescript [mono] [jetbrainsmono]
+  \definefontsynonym [Mono]           [file:JetBrainsMono-Regular.ttf]
+  \definefontsynonym [MonoBold]       [file:JetBrainsMono-Bold.ttf]
+  \definefontsynonym [MonoItalic]     [file:JetBrainsMono-Italic.ttf]
+  \definefontsynonym [MonoBoldItalic] [file:JetBrainsMono-BoldItalic.ttf]
+\stoptypescript
+
+\starttypescript [math] [libertinus]
+  \definefontsynonym [MathRoman] [file:LibertinusMath-Regular.otf]
+\stoptypescript
+
+%D Typeface collection
+
+\starttypescript [cap-academic]
+  \definetypeface [cap-academic] [rm] [serif] [libertinus]  [default]
+  \definetypeface [cap-academic] [ss] [sans]  [inter]       [default]
+  \definetypeface [cap-academic] [tt] [mono]  [jetbrainsmono] [default]
+  \definetypeface [cap-academic] [mm] [math]  [libertinus]  [default]
+\stoptypescript
+
+%D Body font setup
+
+\setupbodyfont[cap-academic, 11pt]
+
+%D Configurações de qualidade tipográfica
+
+\setupalign[
+  hz,           % Expansão de fonte (microtypography)
+  hanging,      % Pontuação pendurada
+  lesshyphenation,
+  tolerant,
+  stretch
+]
+
+\setupinterlinespace[
+  line=1.618\measured{cap:type:base}  % Golden ratio
+]
+
+%D Protrusion (caracteres que podem ultrapassar margem)
+
+\definefontfeature[default][
+  default,
+  protrusion=quality,
+  expansion=quality
+]
+
+%D OpenType features para qualidade profissional
+
+\definefontfeature[cap:text][
+  default,
+  onum=yes,        % Old-style numbers
+  liga=yes,        % Ligatures
+  kern=yes,        % Kerning
+  tlig=yes,        % TeX ligatures
+  trep=yes         % TeX replacements
+]
+
+\definefontfeature[cap:headings][
+  default,
+  lnum=yes,        % Lining numbers
+  liga=yes,
+  kern=yes,
+  tlig=yes,
+  trep=yes
+]
+
+\definefontfeature[cap:code][
+  default,
+  liga=no,         % No ligatures in code
+  kern=yes
+]
+
+%D Comandos para trocar features facilmente
+
+\definecharacterkerning [cap:uppercase] [factor=0.05]
+
+\stopmodule
+
+\endinput

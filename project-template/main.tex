@@ -1,0 +1,71 @@
+% Template de Projeto - ConTeXt Academic Press
+% Documento acadêmico elegante e profissional
+
+\environment ../core/cap-core
+
+\startdocument
+
+%D ============================================================
+%D CAPA E MATÉRIA PRELIMINAR
+%D ============================================================
+
+\startfrontmatter
+
+% Capa
+\startstandardmakeup
+  \vfill
+  \midaligned{\definedfont[SansBold at 42pt]\color[CAPPrimary]{Título do Livro}}
+  \vskip 1cm
+  \midaligned{\definedfont[Sans at 18pt]\color[cap:text:secondary]{Subtítulo (opcional)}}
+  \vskip 2cm
+  \midaligned{\definedfont[SansBold at 24pt]{Nome do Autor}}
+  \vfill
+  \midaligned{\definedfont[Sans at 14pt]{Nome da Instituição}}
+  \vskip 5mm
+  \midaligned{\definedfont[Sans at 14pt]{\currentdate}}
+\stopstandardmakeup
+
+% Página de rosto (opcional)
+\page[blank]
+
+% Sumário
+\title{Sumário}
+\placecontent
+
+\stopfrontmatter
+
+%D ============================================================
+%D CORPO DO DOCUMENTO
+%D ============================================================
+
+\startbodymatter
+
+% Incluir capítulos aqui
+\component content/chapters/01-introduction
+
+% Descomente para adicionar mais capítulos:
+% \component content/chapters/02-chapter-two
+% \component content/chapters/03-chapter-three
+
+\stopbodymatter
+
+%D ============================================================
+%D MATÉRIA FINAL
+%D ============================================================
+
+\startbackmatter
+
+% Bibliografia
+% \title{Referências Bibliográficas}
+% \placelistofpublications
+
+% Índice remissivo
+% \title{Índice}
+% \placeindex
+
+% Apêndices
+% \component content/backmatter/appendix
+
+\stopbackmatter
+
+\stopdocument

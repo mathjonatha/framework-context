@@ -1,0 +1,220 @@
+%D \module
+%D   [     file=headings,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Components,
+%D     subtitle=Headings System,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C Sistema de títulos e cabeçalhos
+%C Design moderno e elegante para estrutura do documento
+
+\startmodule[cap-headings]
+
+%D Capítulos - Design impactante
+
+\setuphead[chapter][
+  style=\ss\bfc,
+  color=CAPPrimary,
+  before={\blank[cap:chapter:before]},
+  after={\blank[cap:chapter:after]},
+  align=flushleft,
+  number=yes,
+  incrementnumber=yes,
+  page=right,
+  alternative=middle,
+  grid=yes
+]
+
+%D Comando personalizado para capítulos com número grande
+
+\define[2]\CAPChapterCommand{%
+  \vbox{%
+    \hbox{%
+      \color[cap:primary:200]{%
+        \definedfont[SansBold at 72pt]%
+        #1%
+      }%
+    }%
+    \vskip\measured{cap:space:3}%
+    \hbox{%
+      \definedfont[SansBold at 28pt]%
+      \color[CAPPrimary]{#2}%
+    }%
+  }%
+}
+
+%D Seções - Hierarquia clara
+
+\setuphead[section][
+  style=\ss\bfb,
+  color=CAPPrimary,
+  before={\blank[cap:section:before]},
+  after={\blank[cap:section:after]},
+  align=flushleft,
+  number=yes,
+  incrementnumber=yes,
+  grid=yes
+]
+
+\setuphead[subsection][
+  style=\ss\bfa,
+  color=cap:primary:700,
+  before={\blank[\measured{cap:space:6}]},
+  after={\blank[\measured{cap:space:4}]},
+  align=flushleft,
+  number=yes,
+  incrementnumber=yes,
+  grid=yes
+]
+
+\setuphead[subsubsection][
+  style=\ss\bf,
+  color=cap:text:primary,
+  before={\blank[\measured{cap:space:5}]},
+  after={\blank[\measured{cap:space:3}]},
+  align=flushleft,
+  number=yes,
+  incrementnumber=yes,
+  grid=yes
+]
+
+%D Títulos especiais sem numeração
+
+\definehead[CAPTitle][chapter][
+  number=no,
+  incrementnumber=no
+]
+
+\definehead[CAPSection][section][
+  number=no,
+  incrementnumber=no
+]
+
+%D Conversão de números para formato elegante
+
+\setuphead[chapter][
+  conversion=A,           % Pode ser: n (1,2,3), R (I,II,III), etc
+  sectionsegments=chapter
+]
+
+\setuphead[section][
+  conversion=n,
+  sectionsegments=chapter:section
+]
+
+\setuphead[subsection][
+  conversion=n,
+  sectionsegments=chapter:section:subsection
+]
+
+%D Espaçamento entre número e título
+
+\setupheadnumber[chapter][
+  distance=\measured{cap:space:3}
+]
+
+%D Estilos alternativos
+
+%D Estilo 1: Número grande ao lado (para seções)
+\define[2]\CAPSectionNumbered{%
+  \hbox{%
+    \color[cap:primary:300]{%
+      \definedfont[SansBold at 48pt]%
+      #1%
+    }%
+    \hskip\measured{cap:space:4}%
+    \vtop{%
+      \definedfont[SansBold at 18pt]%
+      \color[CAPPrimary]{#2}%
+    }%
+  }%
+}
+
+%D Estilo 2: Linha decorativa
+\define[1]\CAPSectionLine{%
+  \vbox{%
+    \hbox{%
+      \definedfont[SansBold at 18pt]%
+      \color[CAPPrimary]{#1}%
+    }%
+    \vskip\measured{cap:space:2}%
+    \blackrule[
+      width=40mm,
+      height=2pt,
+      color=CAPAccent
+    ]%
+  }%
+}
+
+%D Estilo 3: Background colorido
+\define[1]\CAPSectionBackground{%
+  \framed[
+    frame=off,
+    background=color,
+    backgroundcolor=cap:primary:50,
+    width=\textwidth,
+    align=flushleft,
+    offset=\measured{cap:space:3}
+  ]{%
+    \definedfont[SansBold at 18pt]%
+    \color[CAPPrimary]{#1}%
+  }%
+}
+
+%D Setup de referências cruzadas
+
+\setupreferencing[
+  state=start,
+  interaction=all
+]
+
+%D Listas (sumário, etc)
+
+\setuplist[chapter][
+  style=\ss\bf,
+  width=20mm,
+  distance=5mm,
+  color=CAPPrimary,
+  pagecolor=CAPPrimary,
+  interaction=all
+]
+
+\setuplist[section][
+  style=\ss,
+  width=25mm,
+  distance=5mm,
+  margin=10mm,
+  color=cap:text:primary,
+  pagecolor=cap:text:primary,
+  interaction=all
+]
+
+\setuplist[subsection][
+  style=\ss\tfx,
+  width=30mm,
+  distance=5mm,
+  margin=20mm,
+  color=cap:text:secondary,
+  pagecolor=cap:text:secondary,
+  interaction=all
+]
+
+%D Comando para sumário personalizado
+
+\define\CAPTableOfContents{%
+  \startstandardmakeup
+    \vfill
+    \midaligned{%
+      \definedfont[SansBold at 36pt]%
+      \color[CAPPrimary]{Sumário}%
+    }%
+    \vskip\measured{cap:space:8}%
+    \placelist[chapter,section][criterium=all]
+    \vfill
+  \stopstandardmakeup
+}
+
+\stopmodule
+
+\endinput

@@ -1,0 +1,108 @@
+# Configuração do Livro - ConTeXt Academic Press
+
+# Metadados do documento
+title: "Título do Livro"
+subtitle: "Subtítulo (opcional)"
+author: "Nome do Autor"
+date: "\\currentdate"
+
+# Informações institucionais
+institution:
+  name: "Nome da Instituição"
+  logo: "assets/logos/logo.pdf"  # Caminho para o logo
+  colors:
+    primary: "#2196F3"    # Azul principal
+    secondary: "#FF9800"  # Laranja secundário
+
+# Configurações de design
+design:
+  # Template base
+  template: "base"
+  type: "textbook"  # textbook, handbook, monograph
+  style: "modern-minimal"  # modern-minimal, classic, tufte
+
+  # Fontes
+  fonts:
+    main: "Libertinus Serif"  # Fonte principal (texto)
+    sans: "Inter"             # Fonte sans-serif (títulos)
+    mono: "JetBrains Mono"    # Fonte monoespaçada (código)
+    math: "Libertinus Math"   # Fonte matemática
+
+  # Layout
+  layout:
+    type: "classic"      # classic, modern, compact, twocolumn
+    paper: "A4"          # A4, Letter, B5, CrownQuarto
+    margins: "generous"  # generous, normal, compact
+
+  # Grid
+  grid:
+    enabled: true
+    baseline: true
+
+  # Cores personalizadas (sobrescreve padrões)
+  colors:
+    scheme: "monochromatic-blue"  # monochromatic-blue, warm, cool, grayscale
+    primary: "#2196F3"
+    accent: "#FF9800"
+
+  # Componentes
+  components:
+    theorems: "leftbar"       # boxed, leftbar, minimal, framed
+    examples: "shaded"        # shaded, leftbar, minimal
+    figures: "full-width"     # normal, full-width, margin
+    code: "highlighted"       # highlighted, simple
+
+  # Estilos especiais
+  special:
+    chapter_openings: "large-number"  # large-number, simple, decorative
+    section_style: "sans-serif"       # sans-serif, serif, minimal
+    page_numbers: "outer"             # outer, center, margin
+
+# Configurações de build
+build:
+  output_dir: "output"
+  mode: "final"  # draft, final, print, digital
+
+  # Opções de compilação
+  options:
+    purge: true           # Limpar arquivos auxiliares
+    optimize_pdf: true    # Otimizar PDF final
+    generate_index: true  # Gerar índice remissivo
+    generate_toc: true    # Gerar sumário
+
+  # Perfis de saída
+  profiles:
+    print:
+      colorspace: "CMYK"
+      pdf_standard: "PDF/X-1a"
+      resolution: 300
+
+    digital:
+      colorspace: "RGB"
+      pdf_standard: "PDF/A"
+      hyperlinks: true
+      bookmarks: true
+
+# Bibliografia
+bibliography:
+  style: "apa"  # apa, abnt, chicago, mla
+  file: "content/bibliography.bib"
+
+# Idioma
+language: "pt"  # pt, en, es, fr
+
+# Recursos adicionais
+features:
+  # Índices
+  index: true
+  glossary: false
+  list_of_figures: true
+  list_of_tables: true
+
+  # Interatividade
+  hyperlinks: true
+  cross_references: true
+
+  # Automação
+  auto_numbering: true
+  auto_references: true

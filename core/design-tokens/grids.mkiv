@@ -1,0 +1,169 @@
+%D \module
+%D   [     file=grids,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Design Tokens,
+%D     subtitle=Grid Systems,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C Sistemas de grid para layouts acadêmicos
+%C Margens, colunas e áreas de página
+
+\startmodule[cap-grids]
+
+%D Layout Clássico - Margens Generosas
+%D Inspirado em livros tradicionais bem projetados
+
+\definelayout[cap:classic][
+  backspace=25mm,      % Margem interna (lombo)
+  width=145mm,         % Largura do texto
+  topspace=20mm,       % Margem superior
+  header=10mm,         % Altura do cabeçalho
+  headerdistance=5mm,  % Distância cabeçalho-texto
+  footer=10mm,         % Altura do rodapé
+  footerdistance=5mm,  % Distância texto-rodapé
+  height=220mm,        % Altura do texto
+  grid=yes
+]
+
+%D Layout Moderno - Mais espaço para conteúdo
+
+\definelayout[cap:modern][
+  backspace=20mm,
+  width=160mm,
+  topspace=18mm,
+  header=8mm,
+  headerdistance=4mm,
+  footer=8mm,
+  footerdistance=4mm,
+  height=235mm,
+  grid=yes
+]
+
+%D Layout Compacto - Para apostilas
+
+\definelayout[cap:compact][
+  backspace=18mm,
+  width=174mm,
+  topspace=15mm,
+  header=7mm,
+  headerdistance=3mm,
+  footer=7mm,
+  footerdistance=3mm,
+  height=247mm,
+  grid=yes
+]
+
+%D Layout Duas Colunas - Para referências e alguns textos
+
+\definelayout[cap:twocolumn][
+  backspace=15mm,
+  width=180mm,
+  topspace=15mm,
+  header=8mm,
+  headerdistance=4mm,
+  footer=8mm,
+  footerdistance=4mm,
+  height=247mm,
+  columns=2,
+  columndistance=6mm,
+  grid=yes
+]
+
+%D Áreas da página
+%D Configuração de cabeçalhos e rodapés
+
+\setupheader[
+  style=\ss\small,
+  color=cap:text:secondary
+]
+
+\setupfooter[
+  style=\ss\small,
+  color=cap:text:secondary
+]
+
+%D Numeração de páginas
+
+\setuppagenumbering[
+  alternative=doublesided,
+  location={footer,middle},
+  style=\ss
+]
+
+%D Margens para notas laterais (Tufte-style)
+%D Útil para comentários, referências laterais
+
+\definemargindata[cap:sidenote][
+  location=outer,
+  width=40mm,
+  distance=5mm,
+  style=\tfx,
+  align=flushleft
+]
+
+%D Grid de baseline
+%D Para alinhamento vertical perfeito
+
+\setupgridsnapping[
+  method=yes,
+  maxdepth=yes,
+  maxheight=yes
+]
+
+%D Configurações para impressão offset
+%D Sangria (bleed) e marcas de corte
+
+\setuplayout[
+  marking=on,     % Marcas de corte
+  location=middle % Centralizar na página
+]
+
+%D Áreas especiais
+
+\definemakeup[cap:titlepage][
+  align=middle,
+  style=\ss,
+  pagestate=start
+]
+
+\definemakeup[cap:colophon][
+  align=flushleft,
+  style=\tfx,
+  pagestate=start
+]
+
+%D Paper sizes comuns para livros acadêmicos
+
+% A4 (padrão internacional)
+\definepapersize[cap:a4][
+  width=210mm,
+  height=297mm
+]
+
+% US Letter
+\definepapersize[cap:letter][
+  width=216mm,
+  height=279mm
+]
+
+% B5 (comum para livros)
+\definepapersize[cap:b5][
+  width=176mm,
+  height=250mm
+]
+
+% Crown Quarto (livros acadêmicos britânicos)
+\definepapersize[cap:crownquarto][
+  width=189mm,
+  height=246mm
+]
+
+%D Setup padrão
+
+\setuppapersize[A4][A4]
+\setuplayout[cap:classic]
+
+\stopmodule
+
+\endinput

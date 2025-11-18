@@ -1,0 +1,153 @@
+% Capítulo 1 - Introdução
+% Exemplo de estrutura de capítulo
+
+\startchapter[title={Introdução},reference=chap:intro]
+
+\startsection[title={Visão Geral}]
+
+Este é um exemplo de documento criado com o framework \color[CAPPrimary]{\bf ConTeXt Academic Press}.
+O framework foi desenvolvido para facilitar a criação de livros didáticos e materiais acadêmicos
+com design elegante e profissional.
+
+\startsubsection[title={Recursos Principais}]
+
+Os principais recursos incluem:
+
+\startitemize[packed]
+  \item Design moderno e minimalista
+  \item Tipografia profissional com fontes Google
+  \item Sistema de cores configurável
+  \item Ambientes especiais para teoremas, exemplos e exercícios
+  \item Suporte completo para matemática de alta qualidade
+  \item Exportação para múltiplos formatos
+\stopitemize
+
+\stopsubsection
+
+\stopsection
+
+\startsection[title={Exemplos de Elementos}]
+
+\startsubsection[title={Teoremas e Definições}]
+
+Aqui está um exemplo de teorema:
+
+\starttheorem[title={Teorema de Pitágoras}]
+Em um triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos.
+
+\startformula
+  c^2 = a^2 + b^2
+\stopformula
+\stoptheorem
+
+E uma definição:
+
+\startdefinition[title={Função Contínua}]
+Uma função \math{f: \reals \to \reals} é contínua em \math{x_0} se para todo \math{\epsilon > 0},
+existe \math{\delta > 0} tal que:
+
+\startformula
+  |x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \epsilon
+\stopformula
+\stopdefinition
+
+\stopsubsection
+
+\startsubsection[title={Exemplos e Exercícios}]
+
+\startexample[title={Cálculo de Limite}]
+Calcule o limite:
+\startformula
+  \lim_{x \to 2} \frac{x^2 - 4}{x - 2}
+\stopformula
+
+\startsolution
+Fatorando o numerador:
+\startformula
+  \frac{x^2 - 4}{x - 2} = \frac{(x-2)(x+2)}{x-2} = x + 2
+\stopformula
+
+Portanto:
+\startformula
+  \lim_{x \to 2} \frac{x^2 - 4}{x - 2} = \lim_{x \to 2} (x+2) = 4
+\stopformula
+\stopsolution
+\stopexample
+
+\startexercise
+Calcule os seguintes limites:
+\startitemize[n]
+  \item \math{\displaystyle\lim_{x \to 3} \frac{x^2 - 9}{x - 3}}
+  \item \math{\displaystyle\lim_{x \to 0} \frac{\sin x}{x}}
+  \item \math{\displaystyle\lim_{x \to \infty} \frac{2x^2 + 1}{x^2 - 3}}
+\stopitemize
+\stopexercise
+
+\stopsubsection
+
+\startsubsection[title={Boxes Especiais}]
+
+Você pode usar diferentes tipos de boxes para destacar conteúdo:
+
+\startCAPNote
+Esta é uma nota informativa. Use para informações importantes que complementam o texto principal.
+\stopCAPNote
+
+\startCAPWarning
+Este é um aviso. Use para alertar sobre conceitos que frequentemente causam confusão ou
+erros comuns.
+\stopCAPWarning
+
+\stopsubsection
+
+\stopsection
+
+\startsection[title={Matemática Avançada}]
+
+O framework suporta matemática complexa com excelente qualidade tipográfica.
+
+\startsubsection[title={Equações}]
+
+Equações numeradas automaticamente:
+
+\startformula
+  \int_{a}^{b} f(x) \, dx = F(b) - F(a)
+\stopformula
+
+\startformula
+  \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\stopformula
+
+\stopsubsection
+
+\startsubsection[title={Matrizes}]
+
+Exemplo de matriz:
+
+\startformula
+  A = \startpmatrix
+    \NC 1 \NC 2 \NC 3 \NR
+    \NC 4 \NC 5 \NC 6 \NR
+    \NC 7 \NC 8 \NC 9 \NR
+  \stoppmatrix
+\stopformula
+
+\stopsubsection
+
+\stopsection
+
+\startsection[title={Próximos Passos}]
+
+Para aprender mais sobre o framework, consulte a documentação completa em \type{docs/}.
+
+Alguns tópicos importantes:
+\startitemize
+  \item Configuração de cores e fontes
+  \item Criação de templates personalizados
+  \item Módulos especializados por área
+  \item Compilação e exportação
+\stopitemize
+
+\stopsection
+
+\stopchapter

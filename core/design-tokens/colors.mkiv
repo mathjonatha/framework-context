@@ -1,0 +1,99 @@
+%D \module
+%D   [     file=colors,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Design Tokens,
+%D     subtitle=Color Palettes,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C Sistema de cores para textos acadêmicos
+%C Paletas configuráveis para diferentes identidades visuais
+
+\startmodule[cap-colors]
+
+%D Paleta Base - Monocromática Azul
+%D Elegante e profissional para textos acadêmicos
+
+\definecolor[cap:primary:50]  [h=E3F2FD]
+\definecolor[cap:primary:100] [h=BBDEFB]
+\definecolor[cap:primary:200] [h=90CAF9]
+\definecolor[cap:primary:300] [h=64B5F6]
+\definecolor[cap:primary:400] [h=42A5F5]
+\definecolor[cap:primary:500] [h=2196F3]  % Primary
+\definecolor[cap:primary:600] [h=1E88E5]
+\definecolor[cap:primary:700] [h=1976D2]
+\definecolor[cap:primary:800] [h=1565C0]
+\definecolor[cap:primary:900] [h=0D47A1]
+
+%D Paleta de Acentos - Laranja Quente
+%D Para destacar elementos importantes
+
+\definecolor[cap:accent:50]   [h=FFF3E0]
+\definecolor[cap:accent:100]  [h=FFE0B2]
+\definecolor[cap:accent:200]  [h=FFCC80]
+\definecolor[cap:accent:300]  [h=FFB74D]
+\definecolor[cap:accent:400]  [h=FFA726]
+\definecolor[cap:accent:500]  [h=FF9800]  % Accent
+\definecolor[cap:accent:600]  [h=FB8C00]
+\definecolor[cap:accent:700]  [h=F57C00]
+\definecolor[cap:accent:800]  [h=EF6C00]
+\definecolor[cap:accent:900]  [h=E65100]
+
+%D Paleta Neutra - Cinzas
+%D Para texto, fundos e elementos secundários
+
+\definecolor[cap:neutral:50]  [h=FAFAFA]
+\definecolor[cap:neutral:100] [h=F5F5F5]
+\definecolor[cap:neutral:200] [h=EEEEEE]
+\definecolor[cap:neutral:300] [h=E0E0E0]
+\definecolor[cap:neutral:400] [h=BDBDBD]
+\definecolor[cap:neutral:500] [h=9E9E9E]
+\definecolor[cap:neutral:600] [h=757575]
+\definecolor[cap:neutral:700] [h=616161]
+\definecolor[cap:neutral:800] [h=424242]
+\definecolor[cap:neutral:900] [h=212121]
+
+%D Cores Semânticas
+%D Para feedback, alertas e elementos especiais
+
+\definecolor[cap:success:light] [h=C8E6C9]
+\definecolor[cap:success]       [h=4CAF50]
+\definecolor[cap:success:dark]  [h=2E7D32]
+
+\definecolor[cap:warning:light] [h=FFECB3]
+\definecolor[cap:warning]       [h=FFC107]
+\definecolor[cap:warning:dark]  [h=F57F17]
+
+\definecolor[cap:error:light]   [h=FFCDD2]
+\definecolor[cap:error]         [h=F44336]
+\definecolor[cap:error:dark]    [h=C62828]
+
+\definecolor[cap:info:light]    [h=B3E5FC]
+\definecolor[cap:info]          [h=03A9F4]
+\definecolor[cap:info:dark]     [h=01579B]
+
+%D Cores de Texto
+%D Hierarquia de contraste para legibilidade
+
+\definecolor[cap:text:primary]    [cap:neutral:900]
+\definecolor[cap:text:secondary]  [cap:neutral:700]
+\definecolor[cap:text:disabled]   [cap:neutral:500]
+\definecolor[cap:text:inverse]    [white]
+
+%D Cores de Fundo
+%D Para diferentes contextos
+
+\definecolor[cap:background:paper]    [white]
+\definecolor[cap:background:default]  [cap:neutral:50]
+\definecolor[cap:background:elevated] [white]
+
+%D Atalhos para uso comum
+
+\definecolor[CAPPrimary]   [cap:primary:500]
+\definecolor[CAPAccent]    [cap:accent:500]
+\definecolor[CAPText]      [cap:text:primary]
+\definecolor[CAPTextLight] [cap:text:secondary]
+
+\stopmodule
+
+\endinput

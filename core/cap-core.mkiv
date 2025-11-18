@@ -1,0 +1,112 @@
+%D \module
+%D   [     file=cap-core,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Core,
+%D     subtitle=Main Module Loader,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C ConTeXt Academic Press Framework
+%C Sistema completo para publicações acadêmicas elegantes
+
+\startmodule[cap-core]
+
+%D Carrega todos os design tokens
+
+\usemodule[cap-colors]
+\environment core/design-tokens/colors
+
+\usemodule[cap-typography]
+\environment core/design-tokens/typography
+
+\usemodule[cap-spacing]
+\environment core/design-tokens/spacing
+
+\usemodule[cap-grids]
+\environment core/design-tokens/grids
+
+%D Carrega componentes base
+
+\usemodule[cap-headings]
+\environment core/components/headings
+
+\usemodule[cap-boxes]
+\environment core/components/boxes
+
+\usemodule[cap-math]
+\environment core/components/math
+
+%D Configurações globais do documento
+
+\setupinteraction[
+  state=start,
+  color=CAPPrimary,
+  contrastcolor=CAPAccent,
+  style=normal
+]
+
+\setupexternalfigures[
+  location={local,default,global},
+  directory={assets/images}
+]
+
+%D Hyphenation e idioma
+
+\mainlanguage[pt]  % Português como padrão
+
+%D PDF metadata setup
+
+\setupinteraction[
+  title={Documento Acadêmico},
+  subtitle={},
+  author={},
+  keyword={},
+  date={\currentdate}
+]
+
+%D Bookmarks (índice do PDF)
+
+\setupinteractionscreen[
+  option=bookmark
+]
+
+\placebookmarks[
+  chapter,
+  section,
+  subsection
+][chapter]
+
+%D Versão do framework
+
+\def\CAPVersion{1.0.0}
+\def\CAPDate{2025.01.18}
+
+%D Comando de inicialização
+
+\def\startCAPDocument{%
+  \starttext
+}
+
+\def\stopCAPDocument{%
+  \stoptext
+}
+
+%D Informações do documento
+
+\defineoverlay[watermark][\useMPgraphic{watermark}]
+
+\startuseMPgraphic{watermark}
+  draw textext("\ss\tfa Draft")
+    rotated 45
+    withcolor transparent(1, 0.2, \MPcolor{cap:neutral:300});
+\stopuseMPgraphic
+
+%D Modo draft
+
+\def\CAPDraftMode{%
+  \setupbackgrounds[page][background=watermark]
+}
+
+\stopmodule
+
+\endinput

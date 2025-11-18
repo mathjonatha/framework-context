@@ -1,0 +1,100 @@
+%D \module
+%D   [     file=spacing,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Design Tokens,
+%D     subtitle=Spacing System,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C Sistema de espaçamento modular
+%C Baseado em escala de 8pt para consistência visual
+
+\startmodule[cap-spacing]
+
+%D Escala de Espaçamento Base (8pt system)
+%D Múltiplos de 8pt para alinhamento perfeito
+
+\definemeasure[cap:space:0]   [0pt]
+\definemeasure[cap:space:1]   [4pt]     % 0.5 unit
+\definemeasure[cap:space:2]   [8pt]     % 1 unit (base)
+\definemeasure[cap:space:3]   [12pt]    % 1.5 units
+\definemeasure[cap:space:4]   [16pt]    % 2 units
+\definemeasure[cap:space:5]   [24pt]    % 3 units
+\definemeasure[cap:space:6]   [32pt]    % 4 units
+\definemeasure[cap:space:7]   [40pt]    % 5 units
+\definemeasure[cap:space:8]   [48pt]    % 6 units
+\definemeasure[cap:space:9]   [64pt]    % 8 units
+\definemeasure[cap:space:10]  [80pt]    % 10 units
+\definemeasure[cap:space:11]  [96pt]    % 12 units
+\definemeasure[cap:space:12]  [128pt]   % 16 units
+
+%D Atalhos semânticos para espaçamento
+
+\definemeasure[cap:space:tiny]      [\measured{cap:space:1}]
+\definemeasure[cap:space:small]     [\measured{cap:space:2}]
+\definemeasure[cap:space:medium]    [\measured{cap:space:4}]
+\definemeasure[cap:space:large]     [\measured{cap:space:6}]
+\definemeasure[cap:space:xlarge]    [\measured{cap:space:8}]
+\definemeasure[cap:space:xxlarge]   [\measured{cap:space:10}]
+
+%D Espaçamento vertical entre elementos
+
+\defineblank[cap:para:small]    [\measured{cap:space:3}]
+\defineblank[cap:para:normal]   [\measured{cap:space:4}]
+\defineblank[cap:para:large]    [\measured{cap:space:5}]
+
+\defineblank[cap:section:before] [\measured{cap:space:8}]
+\defineblank[cap:section:after]  [\measured{cap:space:5}]
+
+\defineblank[cap:chapter:before] [\measured{cap:space:12}]
+\defineblank[cap:chapter:after]  [\measured{cap:space:7}]
+
+%D Espaçamento para ambientes especiais
+
+\defineblank[cap:box:before]     [\measured{cap:space:5}]
+\defineblank[cap:box:after]      [\measured{cap:space:5}]
+
+\defineblank[cap:formula:before] [\measured{cap:space:4}]
+\defineblank[cap:formula:after]  [\measured{cap:space:4}]
+
+\defineblank[cap:figure:before]  [\measured{cap:space:6}]
+\defineblank[cap:figure:after]   [\measured{cap:space:6}]
+
+\defineblank[cap:list:before]    [\measured{cap:space:3}]
+\defineblank[cap:list:after]     [\measured{cap:space:3}]
+\defineblank[cap:list:between]   [\measured{cap:space:2}]
+
+%D Indentação
+
+\definemeasure[cap:indent:none]    [0pt]
+\definemeasure[cap:indent:small]   [1em]
+\definemeasure[cap:indent:normal]  [1.5em]
+\definemeasure[cap:indent:large]   [2em]
+
+%D Margens e padding para boxes
+
+\definemeasure[cap:box:padding:small]   [\measured{cap:space:3}]
+\definemeasure[cap:box:padding:normal]  [\measured{cap:space:4}]
+\definemeasure[cap:box:padding:large]   [\measured{cap:space:5}]
+
+%D Configuração padrão de whitespace
+
+\setupwhitespace[
+  medium  % Espaço entre parágrafos
+]
+
+\setupindenting[
+  yes,
+  \measured{cap:indent:normal}
+]
+
+%D Grid vertical para alinhamento baseline
+%D Ajuda a manter ritmo vertical consistente
+
+\setuplayout[
+  grid=yes
+]
+
+\stopmodule
+
+\endinput

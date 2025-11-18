@@ -1,0 +1,7 @@
+# ConTeXt Academic Press - Dependências Python
+
+# Obrigatórias
+pyyaml>=6.0        # Processamento de arquivos YAML de configuração
+
+# Opcionais (para funcionalidades extras)
+watchdog>=3.0      # Para modo watch (recompilação automática)

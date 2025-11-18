@@ -1,0 +1,63 @@
+# ConTeXt Academic Press - Git Ignore
+
+# Arquivos ConTeXt
+*.log
+*.tuc
+*.tmp
+*.bak
+*.tuo
+*.tui
+*.top
+
+# PDFs gerados (comente se quiser versionar)
+*.pdf
+
+# Diretórios de output
+output/
+build_output/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Arquivos temporários do sistema
+Thumbs.db
+Desktop.ini
+
+# Fontes (se não quiser versionar)
+# fonts/google-fonts/*.otf
+# fonts/google-fonts/*.ttf
+# fonts/math-fonts/*.otf
+
+# Logs e caches
+*.cache
+.cache/

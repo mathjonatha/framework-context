@@ -1,0 +1,328 @@
+%D \module
+%D   [     file=boxes,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Components,
+%D     subtitle=Boxes and Environments,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C Ambientes especiais para conteúdo acadêmico
+%C Teoremas, definições, exemplos, exercícios, etc
+
+\startmodule[cap-boxes]
+
+%D Configuração base para enumerações
+
+\defineenumeration[theorem][
+  text=Teorema,
+  title=yes,
+  titleleft=,
+  titleright=,
+  style=\tf,
+  headstyle=\ss\bf,
+  headcolor=CAPPrimary,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:3},
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]},
+  number=yes,
+  way=bychapter
+]
+
+\defineenumeration[definition][
+  text=Definição,
+  title=yes,
+  titleleft=,
+  titleright=,
+  style=\tf,
+  headstyle=\ss\bf,
+  headcolor=cap:accent:700,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:3},
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]},
+  number=yes,
+  way=bychapter
+]
+
+\defineenumeration[lemma][
+  text=Lema,
+  title=yes,
+  titleleft=,
+  titleright=,
+  style=\tf,
+  headstyle=\ss\bf,
+  headcolor=cap:primary:600,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:3},
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]},
+  number=yes,
+  way=bychapter
+]
+
+\defineenumeration[corollary][
+  text=Corolário,
+  title=yes,
+  titleleft=,
+  titleright=,
+  style=\tf,
+  headstyle=\ss\bf,
+  headcolor=cap:primary:600,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:3},
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]},
+  number=yes,
+  way=bychapter
+]
+
+\defineenumeration[proposition][
+  text=Proposição,
+  title=yes,
+  titleleft=,
+  titleright=,
+  style=\tf,
+  headstyle=\ss\bf,
+  headcolor=cap:primary:600,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:3},
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]},
+  number=yes,
+  way=bychapter
+]
+
+%D Exemplos e exercícios
+
+\defineenumeration[example][
+  text=Exemplo,
+  title=yes,
+  titleleft=,
+  titleright=,
+  style=\tf,
+  headstyle=\ss\bf,
+  headcolor=cap:success:dark,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:3},
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]},
+  number=yes,
+  way=bychapter
+]
+
+\defineenumeration[exercise][
+  text=Exercício,
+  title=yes,
+  titleleft=,
+  titleright=,
+  style=\tf,
+  headstyle=\ss\bf,
+  headcolor=cap:neutral:700,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:3},
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]},
+  number=yes,
+  way=bychapter
+]
+
+%D Boxes com background
+
+\definetextbackground[cap:theorembox][
+  location=paragraph,
+  background=color,
+  backgroundcolor=cap:primary:50,
+  leftoffset=\measured{cap:space:3},
+  rightoffset=\measured{cap:space:3},
+  topoffset=\measured{cap:space:2},
+  bottomoffset=\measured{cap:space:2},
+  frame=off,
+  width=\textwidth,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+\definetextbackground[cap:examplebox][
+  location=paragraph,
+  background=color,
+  backgroundcolor=cap:success:light,
+  leftoffset=\measured{cap:space:3},
+  rightoffset=\measured{cap:space:3},
+  topoffset=\measured{cap:space:2},
+  bottomoffset=\measured{cap:space:2},
+  frame=off,
+  width=\textwidth,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+\definetextbackground[cap:notebox][
+  location=paragraph,
+  background=color,
+  backgroundcolor=cap:info:light,
+  leftoffset=\measured{cap:space:3},
+  rightoffset=\measured{cap:space:3},
+  topoffset=\measured{cap:space:2},
+  bottomoffset=\measured{cap:space:2},
+  frame=off,
+  width=\textwidth,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+\definetextbackground[cap:warningbox][
+  location=paragraph,
+  background=color,
+  backgroundcolor=cap:warning:light,
+  leftoffset=\measured{cap:space:3},
+  rightoffset=\measured{cap:space:3},
+  topoffset=\measured{cap:space:2},
+  bottomoffset=\measured{cap:space:2},
+  frame=off,
+  width=\textwidth,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+%D Boxes com borda lateral (left bar)
+
+\definetextbackground[cap:leftbar:primary][
+  location=paragraph,
+  background=color,
+  backgroundcolor=cap:primary:50,
+  frame=on,
+  framecolor=CAPPrimary,
+  rulethickness=3pt,
+  leftframe=on,
+  rightframe=off,
+  topframe=off,
+  bottomframe=off,
+  leftoffset=\measured{cap:space:3},
+  rightoffset=\measured{cap:space:3},
+  topoffset=\measured{cap:space:2},
+  bottomoffset=\measured{cap:space:2},
+  width=\textwidth,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+\definetextbackground[cap:leftbar:success][
+  location=paragraph,
+  background=color,
+  backgroundcolor=cap:success:light,
+  frame=on,
+  framecolor=cap:success:dark,
+  rulethickness=3pt,
+  leftframe=on,
+  rightframe=off,
+  topframe=off,
+  bottomframe=off,
+  leftoffset=\measured{cap:space:3},
+  rightoffset=\measured{cap:space:3},
+  topoffset=\measured{cap:space:2},
+  bottomoffset=\measured{cap:space:2},
+  width=\textwidth,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+\definetextbackground[cap:leftbar:accent][
+  location=paragraph,
+  background=color,
+  backgroundcolor=cap:accent:50,
+  frame=on,
+  framecolor=CAPAccent,
+  rulethickness=3pt,
+  leftframe=on,
+  rightframe=off,
+  topframe=off,
+  bottomframe=off,
+  leftoffset=\measured{cap:space:3},
+  rightoffset=\measured{cap:space:3},
+  topoffset=\measured{cap:space:2},
+  bottomoffset=\measured{cap:space:2},
+  width=\textwidth,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+%D Frames completos
+
+\defineframedtext[cap:framedtheorem][
+  width=\textwidth,
+  frame=on,
+  framecolor=CAPPrimary,
+  rulethickness=1pt,
+  corner=round,
+  offset=\measured{cap:space:3},
+  background=color,
+  backgroundcolor=cap:primary:50,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+\defineframedtext[cap:framedexample][
+  width=\textwidth,
+  frame=on,
+  framecolor=cap:success:dark,
+  rulethickness=1pt,
+  corner=round,
+  offset=\measured{cap:space:3},
+  background=color,
+  backgroundcolor=cap:success:light,
+  before={\blank[cap:box:before]},
+  after={\blank[cap:box:after]}
+]
+
+%D Comandos de conveniência
+
+\def\startCAPTheorem{\starttextbackground[cap:leftbar:primary]}
+\def\stopCAPTheorem{\stoptextbackground}
+
+\def\startCAPExample{\starttextbackground[cap:leftbar:success]}
+\def\stopCAPExample{\stoptextbackground}
+
+\def\startCAPNote{\starttextbackground[cap:notebox]}
+\def\stopCAPNote{\stoptextbackground}
+
+\def\startCAPWarning{\starttextbackground[cap:warningbox]}
+\def\stopCAPWarning{\stoptextbackground}
+
+%D Provas
+
+\definestartstop[proof][
+  before={%
+    \blank[cap:box:before]%
+    {\ss\bf\color[cap:text:secondary]{Demonstração.}}%
+    \blank[\measured{cap:space:2}]%
+  },
+  after={%
+    \hfill\mathematics{\square}% QED symbol
+    \blank[cap:box:after]%
+  }
+]
+
+%D Soluções
+
+\definestartstop[solution][
+  before={%
+    \blank[cap:box:before]%
+    {\ss\bf\color[cap:success:dark]{Solução.}}%
+    \blank[\measured{cap:space:2}]%
+  },
+  after={%
+    \blank[cap:box:after]%
+  }
+]
+
+\stopmodule
+
+\endinput

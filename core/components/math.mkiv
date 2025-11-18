@@ -1,0 +1,219 @@
+%D \module
+%D   [     file=math,
+%D      version=2025.01.18,
+%D        title=ConTeXt Academic Press - Components,
+%D     subtitle=Mathematics,
+%D       author=Context Academic Press,
+%D         date=\currentdate]
+
+%C Configurações para matemática de alta qualidade
+%C Equações, fórmulas e ambientes matemáticos
+
+\startmodule[cap-math]
+
+%D Configuração básica de matemática
+
+\setupformulas[
+  location=middle,
+  left={\blank[cap:formula:before]},
+  right={\blank[cap:formula:after]},
+  spacebefore=\measured{cap:space:4},
+  spaceafter=\measured{cap:space:4},
+  numbering=yes,
+  way=bychapter,
+  prefix=yes,
+  prefixsegments=chapter
+]
+
+%D Numeração elegante de fórmulas
+
+\setupformulanumbering[
+  way=bychapter,
+  left={(},
+  right={)},
+  location=right,
+  distance=\measured{cap:space:3},
+  style=\ss\tfx,
+  color=cap:text:secondary
+]
+
+%D Estilos de display math
+
+\definemathmatrix[pmatrix][
+  left={\left(\,},
+  right={\,\right)}
+]
+
+\definemathmatrix[bmatrix][
+  left={\left[\,},
+  right={\,\right]}
+]
+
+\definemathmatrix[Bmatrix][
+  left={\left\{\,},
+  right={\,\right\}}
+]
+
+\definemathmatrix[vmatrix][
+  left={\left|\,},
+  right={\,\right|}
+]
+
+\definemathmatrix[Vmatrix][
+  left={\left\|\,},
+  right={\,\right\|}
+]
+
+%D Comandos matemáticos úteis
+
+% Conjuntos numéricos
+\define\naturals{\mathbb{N}}
+\define\integers{\mathbb{Z}}
+\define\rationals{\mathbb{Q}}
+\define\reals{\mathbb{R}}
+\define\complexes{\mathbb{C}}
+
+% Operadores
+\definemathcommand[sen][nolop]{\mfunction{sen}}
+\definemathcommand[tg][nolop]{\mfunction{tg}}
+\definemathcommand[cotg][nolop]{\mfunction{cotg}}
+\definemathcommand[sec][nolop]{\mfunction{sec}}
+\definemathcommand[cossec][nolop]{\mfunction{cossec}}
+\definemathcommand[arcsen][nolop]{\mfunction{arcsen}}
+\definemathcommand[arctg][nolop]{\mfunction{arctg}}
+
+% Vetores e matrizes
+\define[1]\vect{\mathbf{#1}}
+\define[1]\mat{\mathbf{#1}}
+
+% Derivadas
+\define[2]\deriv{\frac{d#1}{d#2}}
+\define[2]\pderiv{\frac{\partial#1}{\partial#2}}
+
+% Limites
+\define[3]\limit{\lim_{#1 \to #2} #3}
+
+% Integrais
+\define[4]\defint{\int_{#1}^{#2} #3 \, d#4}
+
+% Somatórios e produtórios
+\define[3]\summation{\sum_{#1}^{#2} #3}
+\define[3]\product{\prod_{#1}^{#2} #3}
+
+%D Ambientes de equações alinhadas
+
+\defineformulaalign[align][
+  n=2,
+  distance=2em
+]
+
+%D Cases (sistemas de equações)
+
+\definemathcases[numcases][
+  numbering=yes,
+  left={\startmathcases},
+  right={\stopmathcases}
+]
+
+%D Subequações
+
+\definesubformulas[subformulas][
+  way=bytext,
+  levels=2
+]
+
+%D Highlighting de matemática inline e display
+
+\definemathcolor[highlight][color=CAPAccent]
+
+%D Configuração de fontes matemáticas
+
+\setupmathematics[
+  lcgreek=normal,    % Greek lowercase in italic
+  ucgreek=normal,    % Greek uppercase in upright
+  integral=nolimits, % Limits position for integrals
+  autopunctuation=yes
+]
+
+%D Espaçamento em matemática
+
+\setupmathematics[
+  compact=yes,       % Espaçamento mais compacto
+  textdistance=\measured{cap:space:2}
+]
+
+%D Qualidade tipográfica
+
+\setupmathematics[
+  stylealternative=bold,  % Negrito para vetores e matrizes
+  script=modern,
+  lcgreek=normal
+]
+
+%D Ambientes especiais para sistemas
+
+\definestartstop[systemequations][
+  before={%
+    \startformula
+    \startmathcases[
+      left={\left\{\quad},
+      right={\right.}
+    ]%
+  },
+  after={%
+    \stopmathcases
+    \stopformula
+  }
+]
+
+%D Comando para equações importantes destacadas
+
+\define[1]\CAPImportantFormula{%
+  \startframedtext[
+    width=\textwidth,
+    frame=on,
+    framecolor=CAPAccent,
+    rulethickness=2pt,
+    corner=round,
+    offset=\measured{cap:space:4},
+    background=color,
+    backgroundcolor=cap:accent:50,
+    before={\blank[cap:formula:before]},
+    after={\blank[cap:formula:after]}
+  ]
+    \startformula
+      #1
+    \stopformula
+  \stopframedtext
+}
+
+%D Numeração de subequações
+
+\defineconversionset[subformulas][][a]
+
+%D Referências para equações
+
+\definereferenceformat[eqref][
+  left={(},
+  right={)}
+]
+
+%D Legendas para fórmulas longas
+
+\defineenumeration[formulatext][
+  text=,
+  title=yes,
+  titleleft=,
+  titleright=:,
+  style=\tf,
+  headstyle=\ss\it,
+  headcolor=cap:text:secondary,
+  alternative=hanging,
+  width=fit,
+  distance=\measured{cap:space:2},
+  number=no
+]
+
+\stopmodule
+
+\endinput
