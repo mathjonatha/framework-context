@@ -8,9 +8,13 @@ Welcome to the English documentation for ConTeXt Academic Press!
 
 - [Windows 64-bit Installation](installation/windows.md) - Complete installation guide for ConTeXt Standalone on Windows
 
-### User Guides
+### Quick Start Guides
 
+- **[🚀 Your First Document](first-document.md)** - Practical tutorial to create and compile your first project (⏱️ ~15 min)
 - [Getting Started](getting-started.md) - First steps with the framework
+
+### Advanced Guides
+
 - [Design System](design-system.md) - Understanding the design system
 - [Components Reference](components-reference.md) - All available components
 

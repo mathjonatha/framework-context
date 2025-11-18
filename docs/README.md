@@ -46,20 +46,23 @@ docs/
 ### Portuguese / Português
 
 1. [Instalar ConTeXt no Windows](pt-BR/installation/windows.md)
-2. [Guia de Início](pt-BR/getting-started.md)
-3. [Sistema de Design](pt-BR/design-system.md)
+2. **[🚀 Seu Primeiro Documento](pt-BR/primeiro-documento.md)** ⏱️ 15 min
+3. [Guia de Início](pt-BR/getting-started.md)
+4. [Sistema de Design](pt-BR/design-system.md)
 
 ### English
 
 1. [Install ConTeXt on Windows](en/installation/windows.md)
-2. [Getting Started Guide](en/getting-started.md)
-3. [Design System](en/design-system.md)
+2. **[🚀 Your First Document](en/first-document.md)** ⏱️ 15 min
+3. [Getting Started Guide](en/getting-started.md)
+4. [Design System](en/design-system.md)
 
 ## 📚 Documentation Coverage / Cobertura da Documentação
 
 | Document | 🇧🇷 PT-BR | 🇺🇸 EN | 🇪🇸 ES | 🇫🇷 FR | 🇩🇪 DE |
 |----------|--------|-----|-----|-----|-----|
 | Windows Installation | ✅ | ✅ | 🔜 | 🔜 | 🔜 |
+| **First Document** | ✅ | ✅ | 🔜 | 🔜 | 🔜 |
 | Getting Started | ✅ | ✅ | 🔜 | 🔜 | 🔜 |
 | Design System | ✅ | ✅ | 🔜 | 🔜 | 🔜 |
 | Components Reference | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |

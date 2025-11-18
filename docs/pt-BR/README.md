@@ -8,9 +8,13 @@ Bem-vindo à documentação em português do ConTeXt Academic Press!
 
 - [Instalação no Windows 64-bit](installation/windows.md) - Guia completo de instalação do ConTeXt Standalone no Windows
 
-### Guias de Uso
+### Guias de Início Rápido
 
+- **[🚀 Seu Primeiro Documento](primeiro-documento.md)** - Tutorial prático para criar e compilar seu primeiro projeto (⏱️ ~15 min)
 - [Guia de Início](getting-started.md) - Primeiros passos com o framework
+
+### Guias Avançados
+
 - [Sistema de Design](design-system.md) - Entendendo o sistema de design
 - [Referência de Componentes](components-reference.md) - Todos os componentes disponíveis
 

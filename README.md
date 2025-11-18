@@ -211,11 +211,13 @@ Escolha seu idioma / Choose your language:
 
 - 🇧🇷 **[Documentação em Português](docs/pt-BR/README.md)**
   - [Instalação Windows](docs/pt-BR/installation/windows.md)
+  - **[🚀 Seu Primeiro Documento](docs/pt-BR/primeiro-documento.md)** ⏱️ 15 min
   - [Guia de Início](docs/pt-BR/getting-started.md)
   - [Sistema de Design](docs/pt-BR/design-system.md)
 
 - 🇺🇸 **[Documentation in English](docs/en/README.md)**
   - [Windows Installation](docs/en/installation/windows.md)
+  - **[🚀 Your First Document](docs/en/first-document.md)** ⏱️ 15 min
   - [Getting Started Guide](docs/en/getting-started.md)
   - [Design System](docs/en/design-system.md)
 
