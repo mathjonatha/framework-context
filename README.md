@@ -24,6 +24,12 @@ Um sistema completo baseado em ConTeXt para criar livros didáticos, apostilas e
 
 ### Instalação do ConTeXt
 
+📖 **Guias de Instalação Detalhados**:
+- [🇧🇷 Windows 64-bit (Português)](docs/pt-BR/installation/windows.md)
+- [🇺🇸 Windows 64-bit (English)](docs/en/installation/windows.md)
+
+**Instalação Rápida**:
+
 **Linux/macOS:**
 ```bash
 # Download ConTeXt standalone
@@ -32,7 +38,7 @@ sh ./first-setup.sh
 ```
 
 **Windows:**
-Baixe o instalador standalone em: https://wiki.contextgarden.net/ConTeXt_Standalone
+Baixe [context-setup-win64.zip](http://minimals.contextgarden.net/setup/context-setup-win64.zip), extraia e execute `first-setup.bat`
 
 ## 🚀 Início Rápido
 
@@ -199,7 +205,21 @@ cap clean
 
 ## 📖 Documentação
 
-Documentação completa em `docs/`:
+### Documentação Multi-idioma
+
+Escolha seu idioma / Choose your language:
+
+- 🇧🇷 **[Documentação em Português](docs/pt-BR/README.md)**
+  - [Instalação Windows](docs/pt-BR/installation/windows.md)
+  - [Guia de Início](docs/pt-BR/getting-started.md)
+  - [Sistema de Design](docs/pt-BR/design-system.md)
+
+- 🇺🇸 **[Documentation in English](docs/en/README.md)**
+  - [Windows Installation](docs/en/installation/windows.md)
+  - [Getting Started Guide](docs/en/getting-started.md)
+  - [Design System](docs/en/design-system.md)
+
+### Documentação Original (Português)
 
 - [Guia de Início](docs/getting-started.md)
 - [Sistema de Design](docs/design-system.md)
